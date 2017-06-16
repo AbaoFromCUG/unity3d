@@ -1,18 +1,20 @@
 # Unity3D 学习笔记
 ### 关于编辑器的使用
 
-### 关于API的
-
 ### 关于世界坐标
 ####  Vector3 
 > 这是一个表示三维矢量的类
 > 如Vector3 （1，0，0）表示向右移动1个单位
 
+## 关于API的
+
 #### 刚体
 FixedUpdate（）
 > 这是在具有刚体特性的组件，在运动状态改变时被调用
+
 AddForce (Vector3 force, ForceMode mode = ForceMode.Force)
 >这让刚体收到force向的力，改变mode可以让force表示脉冲，加速度或者其他
+
 OnTriggerEnter(Collider other) 
 >这是刚体碰撞时的方法，传入一个碰撞器other然后可以通过other.gameObject()获取碰撞对象，让后通过CompareTag ("Pick Up")判断该碰撞对象是不是某一tag标签
 
@@ -48,4 +50,17 @@ OnTriggerEnter(Collider other)
 			// Run the 'SetCountText()' function (see below)
 			SetCountText ();
 		}
+	}
+
+
+#### transform
+> 在类内，直接引用transform可以改变对象的位置，旋转，放缩
+
+    void Update () 
+	{
+		// Rotate the game object that this script is attached to by 15 in the X axis,
+		// 30 in the Y axis and 45 in the Z axis, multiplied by deltaTime in order to make it per second
+		// rather than per frame.
+		//旋转
+		transform.Rotate (new Vector3 (15, 30, 45) * Time.deltaTime);
 	}
